@@ -1,3 +1,23 @@
+
+# Checkout Web
+
+The Checkout web app simplifies online shopping, focusing on the final steps of the purchasing process, seamlessly guiding users from cart to order completion.
+
+
+## Screenshots
+
+<img width="1792" alt="Checkout-desktop" src="https://github.com/vansh10patpatia/checkout-web/assets/68200019/4579cca8-4086-481e-a9c8-d81e74308ecc">
+<img width="1792" alt="Checkout-desktop-color" src="https://github.com/vansh10patpatia/checkout-web/assets/68200019/e645487c-0ab4-40e5-925c-5bf40ee46284">
+<img width="1792" alt="Payment-desktop" src="https://github.com/vansh10patpatia/checkout-web/assets/68200019/9bfd0b17-d30f-41e4-b286-6c167f15f22b">
+<div>
+  <img width="32%" alt="Checkout-phone" src="https://github.com/vansh10patpatia/checkout-web/assets/68200019/82f0bb34-42d6-45e1-b371-a4cf27c2a02b">
+  <img width="32%" alt="Payment-phone" src="https://github.com/vansh10patpatia/checkout-web/assets/68200019/40bd0e50-8e93-4c3c-9215-c0c6b3db4f46">
+  <img width="32%" alt="Confirmation-phone" src="https://github.com/vansh10patpatia/checkout-web/assets/68200019/648327df-0c49-4768-ac78-476f619ef1c0">
+</div>
+
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
