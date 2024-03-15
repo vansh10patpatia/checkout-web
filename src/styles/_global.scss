@@ -65,6 +65,10 @@ input[type="number"] {
     }
 }
 
+.bg-none {
+    background: none;
+}
+
 @media (max-width: 910px) {
     .wrapper {
         margin: 0 10%;
