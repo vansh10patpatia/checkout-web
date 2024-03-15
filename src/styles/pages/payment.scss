@@ -3,12 +3,13 @@
 .payment {
     .header {
         @extend %flex-center;
-
         margin-bottom: 1rem;
+
         &Button {
             background-color: transparent !important;
             color: var(--foreground);
         }
+
         &Title {
             @extend %flex-center;
 
@@ -20,22 +21,26 @@
     .body {
         @extend %flex-center;
         gap: 20px;
+
         .methods {
-            // border: 1px solid var(--primary);
             border-radius: 5px;
             flex: 1;
             min-height: 200px;
             margin-bottom: auto;
+
             .cardDetails {
                 @extend %flex-center;
+
                 margin-top: 5px;
                 gap: 10px;
                 justify-content: space-between;
+
                 input {
                     width: 30%;
                 }
             }
         }
+
         .summary {
             flex: 1;
             min-height: 200px;
@@ -48,15 +53,18 @@
 
             &Item {
                 @extend %flex-center;
+
                 justify-content: space-between;
                 margin-top: 1rem;
             }
+
             .paymentButton {
                 margin-top: 50px;
                 width: 100%;
             }
         }
     }
+
     .view-910 {
         display: none;
     }
@@ -66,16 +74,20 @@
     .payment {
         .body {
             flex-direction: column;
+
             .methods {
                 margin-bottom: 20px;
             }
+
             .view-910 {
                 display: block;
             }
+
             .summary,
             .methods {
                 width: 70%;
             }
+
             .summary {
                 padding: 5%;
             }

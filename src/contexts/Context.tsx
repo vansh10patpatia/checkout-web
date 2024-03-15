@@ -1,51 +1,21 @@
 import React, { createContext, useEffect, useState } from "react";
-import { DELIVERY_FEE } from "./constants";
-import { MerchantData } from "./types";
-import { useCache } from "./useCache";
+import { DELIVERY_FEE, defaultTheme } from "../utils/constants";
+import { CartAPI, MerchantData, OrderSummary } from "../utils/types";
+import { useCache } from "../utils/useCache";
 
 type GProps = {
     children: React.ReactNode;
 };
 
-interface Product {
-    id: number;
-    title: string;
-    price: number;
-    image: string;
-    quantity: number;
-}
-
-interface CartAPI {
-    products: Product[];
-    paymentMethods: string[];
-}
-
-interface OrderSummary {
-    deliveryFee: number;
-    orderAmount: number;
-    discount: number;
-    orderTotal: number;
-}
-
-interface CartContextType {
+interface ContextType {
     cartDetails: CartAPI;
     orderSummary: OrderSummary;
     theme: MerchantData;
     changeTheme: (themeData: MerchantData | {}) => void;
     changeCartDetails: (cartDetails: CartAPI | {}) => void;
 }
-const defaultTheme = {
-    merchantName: "GROWW",
-    merchantLogo: "https://groww.in/groww-logo-270.png",
-    theme: {
-        "--background": "hsl(20, 14.3%, 4.1%)",
-        "--foreground": "hsl(0, 0%, 95%)",
-        "--primary": "hsl(346.8, 77.2%, 49.8%)",
-        "--primary-foreground": "hsl(355.7, 100%, 97.3%)",
-    },
-};
 
-export const CartContext = createContext<CartContextType>({
+export const CheckoutContext = createContext<ContextType>({
     cartDetails: {
         products: [],
         paymentMethods: [],
@@ -61,7 +31,8 @@ export const CartContext = createContext<CartContextType>({
     changeCartDetails: () => {},
 });
 
-const CartContextProvider = (props: GProps) => {
+const ContextProvider = (props: GProps) => {
+    const [theme, setTheme] = useState<MerchantData>(defaultTheme);
     const [cartDetails, setCartDetails] = useState<CartAPI>({
         products: [],
         paymentMethods: [],
@@ -73,8 +44,6 @@ const CartContextProvider = (props: GProps) => {
         discount: 0,
         orderTotal: 0,
     });
-
-    const [theme, setTheme] = useState<MerchantData>(defaultTheme);
 
     const changeCartDetails = (data: CartAPI | {}) => {
         const cartTotal = (data as CartAPI).products.reduce(
@@ -109,7 +78,7 @@ const CartContextProvider = (props: GProps) => {
     };
 
     return (
-        <CartContext.Provider
+        <CheckoutContext.Provider
             value={{
                 cartDetails,
                 changeCartDetails,
@@ -119,8 +88,8 @@ const CartContextProvider = (props: GProps) => {
             }}
         >
             {props.children}
-        </CartContext.Provider>
+        </CheckoutContext.Provider>
     );
 };
 
-export default CartContextProvider;
+export default ContextProvider;

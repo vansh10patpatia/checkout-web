@@ -1,7 +1,6 @@
-import { useEffect, useContext, Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import Head from "next/head";
-import { useCache } from "@/utils/useCache";
-import Header from "../Header";
+import { CheckoutContext } from "@/contexts/Context";
 
 interface WrapperProps {
     Component: React.ComponentType<any>;
@@ -9,6 +8,11 @@ interface WrapperProps {
 }
 
 const Wrapper: React.FC<WrapperProps> = ({ Component, pageProps }) => {
+    const { theme } = useContext(CheckoutContext);
+    const title = theme.merchantName + "- Journey Through Checkout Bliss";
+    const description =
+        "Embark on a journey of seamless transactions with our user-friendly checkout experience!";
+
     return (
         <Fragment>
             <Head>
@@ -28,56 +32,38 @@ const Wrapper: React.FC<WrapperProps> = ({ Component, pageProps }) => {
                     rel="icon"
                     type="image/png"
                     sizes="32x32"
-                    href="/favicon.png"
+                    href={theme.merchantLogo}
                 />
                 <link
                     rel="icon"
                     type="image/png"
                     sizes="16x16"
-                    href="/favicon.png"
+                    href={theme.merchantLogo}
                 />
                 <link rel="mask-icon" href="/vercel.svg" color="#4A91FF" />
                 <meta name="theme-color" content="#ffffff" />
 
                 {/* MAIN META TAGS  */}
-                <title>GEU One - Explore a New College Experience</title>
-                <meta
-                    name="description"
-                    content="Get Access to all the college essentials on your finger tips. Explore a new college experience with GEU One."
-                />
+                <title>{title}</title>
+                <meta name="description" content={description} />
 
                 {/* SOCIAL META TAGS  */}
                 <meta property="og:site_name" content="GEU Drive" />
-                <meta
-                    property="og:title"
-                    content="GEU One - Explore a New College Experience"
-                />
-                <meta
-                    property="og:description"
-                    content="Get Access to all the college essentials on your finger tips. Explore a new college experience with GEU One."
-                />
+                <meta property="og:title" content={title} />
+                <meta property="og:description" content={description} />
                 <meta
                     property="og:image"
                     itemProp="image"
-                    content="https://geu.one/favicon.png"
+                    content={theme.merchantLogo}
                 />
                 <meta property="og:type" content="website" />
-                <meta property="og:site_name" content="GEU One" />
+                <meta property="og:site_name" content={theme.merchantName} />
 
                 {/* TWITTER META TAGS  */}
-                <meta
-                    name="twitter:title"
-                    content="GEU One - Explore a New College Experience"
-                />
-                <meta
-                    name="twitter:description"
-                    content="Get Access to all the college essentials on your finger tips. Explore a new college experience with GEU One."
-                />
-                <meta
-                    name="twitter:image"
-                    content="https://geu.one/favicon.png"
-                />
-                <meta name="twitter:creator" content="@amankumarjagdev" />
+                <meta name="twitter:title" content={title} />
+                <meta name="twitter:description" content={description} />
+                <meta name="twitter:image" content={theme.merchantLogo} />
+                <meta name="twitter:creator" content="@pattu___" />
             </Head>
             <div className="wrapper">
                 <Component {...pageProps} />

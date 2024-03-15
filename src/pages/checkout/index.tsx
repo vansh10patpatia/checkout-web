@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useMemo, useState } from "react";
 import Button from "@/components/Form/Button";
 import { IoChevronBack, IoLocationOutline } from "react-icons/io5";
 import { BsTelephone, BsFillTrashFill } from "react-icons/bs";
-import { CartContext } from "@/utils/CartContext";
+import { CheckoutContext } from "@/contexts/Context";
 import Input from "@/components/Form/Input";
 import { useCache } from "@/utils/useCache";
 import { camelToFlat, formatDate, validatePhone } from "@/utils/helpers";
@@ -12,19 +12,9 @@ import { Router, useRouter } from "next/router";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import EmptyCart from "@/components/Lottie/Cart";
-
-interface Product {
-    id: number;
-    title: string;
-    price: number;
-    image: string;
-    quantity: number;
-}
-
-interface ApiResponse {
-    products: Product[];
-    paymentMethods: string[];
-}
+import { TfiReload } from "react-icons/tfi";
+import cx from "classnames";
+import { CartAPI } from "@/utils/types";
 
 const ActionButton = ({ children, onClick }: any) => {
     return (
@@ -37,8 +27,8 @@ const ActionButton = ({ children, onClick }: any) => {
 const Checkout = () => {
     const router = useRouter();
     const { orderSummary, cartDetails, changeCartDetails } =
-        useContext(CartContext);
-    const { loading, fetchData } = useCache<ApiResponse>(
+        useContext(CheckoutContext);
+    const { loading, fetchData } = useCache<CartAPI>(
         API_ROUTES.CART,
         changeCartDetails
     );
@@ -56,7 +46,15 @@ const Checkout = () => {
 
         return (
             <>
-                <h2>Order Summary</h2>
+                <div className="OrderSummaryTitle">
+                    <h2>Order Summary</h2>
+                    <p
+                        className={cx("refreshCart", { rotateIcon: loading })}
+                        onClick={fetchData}
+                    >
+                        <TfiReload />
+                    </p>
+                </div>
                 <div className={"OrderSummaryItem"}>
                     <span>Est. Delivery Date</span>
                     <span>{deliveryDate}</span>
@@ -203,7 +201,7 @@ const Checkout = () => {
                             </div>
                         ))}
                 </div>
-                <div className={"view-910 OrderSummary"}>
+                <div className={"view-910 OrderSummary "}>
                     {renderOrderSummary()}
                 </div>
             </div>

@@ -8,15 +8,15 @@
         border-radius: 1%;
         background-color: var(--background);
         cursor: pointer;
-
         border: 0.5px solid var(--foreground);
-        transition: transform 0.3s ease; /* Add transition */
+        transition: transform 0.3s ease;
         border-radius: 3px;
         margin-bottom: 5px;
 
         &:hover {
             background-color: var(--primary);
             color: var(--background);
+
             .icon {
                 color: var(--background);
             }
@@ -24,6 +24,7 @@
                 color: var(--background);
             }
         }
+
         .icon {
             transition: transform 0.3s ease;
             margin-left: auto;

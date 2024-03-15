@@ -1,4 +1,4 @@
-import CartContextProvider from "@/utils/CartContext";
+import ContextProvider from "@/contexts/Context";
 import Wrapper from "@/components/PageWrapper";
 import { AppProps } from "next/app";
 
@@ -11,7 +11,7 @@ import { useCache } from "@/utils/useCache";
 
 function MyApp({ Component, pageProps }: AppProps) {
     return (
-        <CartContextProvider>
+        <ContextProvider>
             <Header />
             <Wrapper Component={Component} pageProps={pageProps} />
             <ToastContainer
@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 pauseOnHover
                 theme="light"
             />
-        </CartContextProvider>
+        </ContextProvider>
     );
 }
 

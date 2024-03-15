@@ -3,22 +3,15 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import FallbackLogo from "@/assests/logo.svg";
 import { useContext, useEffect, useState } from "react";
-import { CartContext } from "@/utils/CartContext";
+import { CheckoutContext } from "@/contexts/Context";
 import Button from "./Form/Button";
 import { IoChevronBack } from "react-icons/io5";
-import { useCache } from "@/utils/useCache";
-import { MerchantData } from "@/utils/types";
-import { API_ROUTES } from "@/utils/constants";
+import Switcher from "./Switcher";
 
 const excludeBackRoutes = ["/checkout", "/confirmation"];
 
 const Header = () => {
-    const { theme, changeTheme } = useContext(CartContext);
-    const { fetchData } = useCache<MerchantData>(
-        API_ROUTES.THEME,
-        changeTheme,
-        true
-    );
+    const { theme } = useContext(CheckoutContext);
 
     const router = useRouter();
     const [imgSrc, setImgSrc] = useState(FallbackLogo);
@@ -43,7 +36,7 @@ const Header = () => {
                             <IoChevronBack />
                         </Button>
                     )}
-                    <figure onClick={fetchData}>
+                    <figure onClick={() => router.push("/checkout")}>
                         <div className="img-container">
                             <Image
                                 src={imgSrc}
@@ -57,6 +50,7 @@ const Header = () => {
                         </div>
                         <figcaption>{theme?.merchantName || "asas"}</figcaption>
                     </figure>
+                    <Switcher />
                 </Fade>
             </div>
         </div>

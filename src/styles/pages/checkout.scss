@@ -3,8 +3,8 @@
 .checkout {
     .header {
         @extend %flex-center;
-
         margin-bottom: 1rem;
+
         &Title {
             @extend %flex-center;
 
@@ -22,22 +22,24 @@
             .Delivery {
                 @extend %mb-10;
                 flex: 1;
+
                 &Badge {
                     @extend %flex-center;
                     @extend %mt-10;
+
                     border-radius: 1%;
                     background-color: var(--badge);
                     width: fit-content;
                     color: var(--black);
                     padding: 1%;
-                    // max-width: 30%;
                     cursor: pointer;
                 }
+
                 &Phone,
                 .PromoCode {
                     @extend %mt-10;
-                    // width: 30%;
                 }
+
                 .PromoCode {
                     .applyButton {
                         font-size: var(--fs-14);
@@ -48,34 +50,12 @@
             }
         }
 
-        .OrderSummary {
-            flex: 1;
-            align-items: baseline;
-
-            background-color: var(--alpha-primary);
-            padding: 2%;
-            border-radius: 2%;
-
-            &Item {
-                &:nth-of-type(1) {
-                    margin-top: 5px;
-                }
-
-                @extend %flex-center;
-                justify-content: space-between;
-                margin-bottom: 1rem;
-
-                .paymentButton {
-                    width: 40%;
-                }
-            }
-        }
-
         .OrderDetails {
             @extend %mt-10;
 
             .OrderItem {
                 @extend %flex-center;
+
                 justify-content: flex-start;
                 gap: 50px;
                 margin-bottom: 1rem;
@@ -89,9 +69,11 @@
                     padding: 5px;
                     background-color: var(--white);
                 }
+
                 &Details {
                     max-width: 75%;
                 }
+
                 &Actions {
                     margin-left: auto;
                     .ActionButton {
@@ -103,22 +85,63 @@
                 }
             }
         }
+
         .OrderSummary {
-            .OrderSummaryTitle {
-                font-size: var(--fs-22);
-            }
-            .OrderSummaryItem {
+            flex: 1;
+            align-items: baseline;
+            background-color: var(--alpha-primary);
+            padding: 2%;
+            border-radius: 2%;
+
+            &Title {
                 @extend %flex-center;
+                @extend %mb-10;
+                justify-content: space-between;
+
+                .refreshCart {
+                    @extend %flex-center;
+
+                    background-color: transparent;
+                    color: var(--primary);
+                    padding: 0;
+                    text-align: end;
+                    font-size: var(--fs-14);
+                    cursor: pointer;
+                }
+
+                .rotateIcon {
+                    animation: rotate 1s linear infinite;
+                }
+            }
+
+            &Item {
+                @extend %flex-center;
+
                 justify-content: space-between;
                 margin-bottom: 1rem;
+
+                &:nth-of-type(1) {
+                    margin-top: 5px;
+                }
+
+                .paymentButton {
+                    width: 40%;
+                }
             }
-            .OrderSummaryTotal {
+
+            &Title {
+                font-size: var(--fs-22);
+            }
+
+            &Total {
                 @extend %flex-center;
+
                 justify-content: space-between;
                 margin-top: 1rem;
                 font-size: var(--fs-26);
             }
         }
+
         .OrderButton {
             @extend %flex-center;
             justify-content: space-between;
@@ -128,6 +151,7 @@
             }
         }
     }
+
     .view-910 {
         display: none;
     }
@@ -143,6 +167,7 @@ h2 {
     }
 
     .view-910 {
+        margin-top: 10px;
         display: block !important;
         padding: 5% !important;
     }
@@ -158,5 +183,14 @@ h2 {
 @media (max-width: 600) {
     .OrderItemDetails {
         font-size: var(--fs-12);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
     }
 }

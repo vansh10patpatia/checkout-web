@@ -6,7 +6,7 @@ import { CURRENCY_SYMBOL } from "@/utils/constants";
 import AccordionWithInput from "@/components/Form/Accordian";
 import { useFormik } from "formik";
 import Input from "@/components/Form/Input";
-import { CartContext } from "@/utils/CartContext";
+import { CheckoutContext } from "@/contexts/Context";
 import { useRouter } from "next/router";
 import { validationMapper } from "@/utils/helpers";
 import { toast } from "react-toastify";
@@ -26,7 +26,7 @@ interface ApiResponse {
 
 const Payment = (props: any) => {
     const router = useRouter();
-    const { cartDetails, orderSummary } = useContext(CartContext);
+    const { cartDetails, orderSummary } = useContext(CheckoutContext);
 
     const [openIndex, setOpenIndex] = useState<number | null>(null);
 
