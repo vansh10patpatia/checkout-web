@@ -54,3 +54,8 @@ Open [http://localhost:3000/checkout](http://localhost:3000/checkout) with your 
   <img width="32%" alt="Payment-phone" src="https://github.com/vansh10patpatia/checkout-web/assets/68200019/40bd0e50-8e93-4c3c-9215-c0c6b3db4f46">
   <img width="32%" alt="Confirmation-phone" src="https://github.com/vansh10patpatia/checkout-web/assets/68200019/648327df-0c49-4768-ac78-476f619ef1c0">
 </div>
+
+## Non-Technical Learnings
+- Time Management: Improved time management skills through structured development phases.
+- Presentation Skills: Enhanced the ability to present and showcase a project effectively.
+- Documentation Skills: Learned the importance of well-maintained documentation for codebases.
