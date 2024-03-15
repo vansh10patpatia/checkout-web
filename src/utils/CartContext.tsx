@@ -31,7 +31,7 @@ interface CartContextType {
     cartDetails: CartAPI;
     orderSummary: OrderSummary;
     theme: MerchantData;
-    changeTheme: () => void;
+    changeTheme: (themeData: MerchantData | {}) => void;
     changeCartDetails: (cartDetails: CartAPI | {}) => void;
 }
 const defaultTheme = {
@@ -94,15 +94,14 @@ const CartContextProvider = (props: GProps) => {
         setCartDetails(data as CartAPI);
     };
 
-    const changeTheme = () => {
-        const { data: themeData, loading } = useCache<MerchantData>(
-            "https://groww-intern-assignment.vercel.app/v1/api/merchant-metadata"
-        );
+    const changeTheme = (themeData: MerchantData | {}) => {
+        if (!themeData) return;
         if (JSON.stringify(themeData) === JSON.stringify(theme)) return;
-        setTheme(themeData as MerchantData);
-        if (themeData) {
+        const newTheme = themeData as MerchantData;
+        setTheme(newTheme);
+        if (newTheme) {
             const root = document.documentElement;
-            const { theme } = themeData;
+            const { theme } = newTheme;
             for (const [key, value] of Object.entries(theme)) {
                 root.style.setProperty(`${key}`, value);
             }

@@ -6,11 +6,19 @@ import { useContext, useEffect, useState } from "react";
 import { CartContext } from "@/utils/CartContext";
 import Button from "./Form/Button";
 import { IoChevronBack } from "react-icons/io5";
+import { useCache } from "@/utils/useCache";
+import { MerchantData } from "@/utils/types";
+import { API_ROUTES } from "@/utils/constants";
 
 const excludeBackRoutes = ["/checkout", "/confirmation"];
 
 const Header = () => {
     const { theme, changeTheme } = useContext(CartContext);
+    const { fetchData } = useCache<MerchantData>(
+        API_ROUTES.THEME,
+        changeTheme,
+        true
+    );
 
     const router = useRouter();
     const [imgSrc, setImgSrc] = useState(FallbackLogo);
@@ -35,7 +43,7 @@ const Header = () => {
                             <IoChevronBack />
                         </Button>
                     )}
-                    <figure onClick={() => router.push("/checkout")}>
+                    <figure onClick={fetchData}>
                         <div className="img-container">
                             <Image
                                 src={imgSrc}

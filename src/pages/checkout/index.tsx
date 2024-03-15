@@ -6,7 +6,7 @@ import { CartContext } from "@/utils/CartContext";
 import Input from "@/components/Form/Input";
 import { useCache } from "@/utils/useCache";
 import { camelToFlat, formatDate, validatePhone } from "@/utils/helpers";
-import { CURRENCY_SYMBOL } from "@/utils/constants";
+import { API_ROUTES, CURRENCY_SYMBOL } from "@/utils/constants";
 import Tooltip from "@/components/Tooltip";
 import { Router, useRouter } from "next/router";
 import { useFormik } from "formik";
@@ -38,8 +38,8 @@ const Checkout = () => {
     const router = useRouter();
     const { orderSummary, cartDetails, changeCartDetails } =
         useContext(CartContext);
-    const { loading } = useCache<ApiResponse>(
-        "https://groww-intern-assignment.vercel.app/v1/api/order-details",
+    const { loading, fetchData } = useCache<ApiResponse>(
+        API_ROUTES.CART,
         changeCartDetails
     );
 
@@ -62,7 +62,7 @@ const Checkout = () => {
                     <span>{deliveryDate}</span>
                 </div>
                 {Object.entries(summaryObj).map(([key, value]) => (
-                    <div className={"OrderSummaryItem"}>
+                    <div className={"OrderSummaryItem"} key={key}>
                         <span>{camelToFlat(key)}</span>
                         <span>
                             {CURRENCY_SYMBOL} {value?.toFixed(2)}
@@ -179,6 +179,7 @@ const Checkout = () => {
                                 <img
                                     src={item.image}
                                     alt={item.title}
+                                    key={item.id}
                                     className={"OrderItemImage"}
                                 />
                                 <div className={"OrderItemDetails"}>
