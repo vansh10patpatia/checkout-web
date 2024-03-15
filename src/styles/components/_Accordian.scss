@@ -1,0 +1,49 @@
+@use "@/styles/defined";
+.accordion {
+    &Header {
+        @extend %flex-center;
+        justify-content: flex-start;
+        gap: 5px;
+        padding: 1rem;
+        border-radius: 1%;
+        background-color: var(--background);
+        cursor: pointer;
+
+        border: 0.5px solid var(--foreground);
+        transition: transform 0.3s ease; /* Add transition */
+        border-radius: 3px;
+        margin-bottom: 5px;
+
+        &:hover {
+            background-color: var(--primary);
+            color: var(--background);
+            .icon {
+                color: var(--background);
+            }
+            .name {
+                color: var(--background);
+            }
+        }
+        .icon {
+            transition: transform 0.3s ease;
+            margin-left: auto;
+        }
+
+        .down {
+            transform: rotate(180deg);
+        }
+
+        .up {
+            transform: rotate(0deg);
+        }
+    }
+
+    &Body {
+        padding: 1rem;
+        border-radius: 1%;
+        border: 0.5px solid var(--foreground);
+        border-top: 0px;
+        margin-bottom: 5px;
+        margin-top: -6px;
+    }
+}

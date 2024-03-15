@@ -1,0 +1,22 @@
+/*
+-----------------------------------------------------------------
+UTILITY CLASSES
+-----------------------------------------------------------------
+*/
+
+.container {
+    margin: 0 auto;
+    // width: min(85%, 70rem);
+}
+
+.min-height-container {
+    min-height: 75vh;
+}
+
+.form__grp {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}

@@ -1,0 +1,20 @@
+@use "@/styles/defined";
+
+.button {
+    @extend %flex-center;
+
+    width: fit-content;
+    padding: 12px 16px;
+    height: 40px;
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    border-radius: 8px;
+    font-size: var(--fs-16);
+    line-height: 1.25rem;
+    border: 0;
+    cursor: pointer;
+}
+
+.disabled {
+    opacity: 0.75;
+}

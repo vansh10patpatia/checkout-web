@@ -1,0 +1,47 @@
+.Header {
+    // top: 0;
+    // position: sticky;
+    .container {
+        padding: 0% 20%;
+        // margin-top: clamp(2rem, 10%, 4rem);
+        display: flex;
+        align-items: center;
+        text-align: center;
+        z-index: 1000;
+
+        // justify-content: center;
+        color: var(--primary);
+        background-color: var(--background);
+        figure {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            .img-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            img {
+                height: 1.5rem;
+                width: 24px;
+                margin-right: 10px;
+            }
+            figcaption {
+                font-size: 1.6rem;
+                font-weight: 700;
+                margin-top: 0.2rem;
+                margin-left: 0.2rem;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .Header {
+        .container {
+            margin-right: 7%;
+            margin-left: 7%;
+        }
+    }
+}

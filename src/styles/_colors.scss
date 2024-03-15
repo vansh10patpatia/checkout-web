@@ -1,0 +1,49 @@
+/*
+-----------------------------------------------------------------
+BASE COLORS
+-----------------------------------------------------------------
+*/
+:root {
+    --back: #aaa;
+    --badge: #f3f4f6;
+
+    --accent-300: #ee2922;
+    --accent-500: #ee2922;
+    --accent-500: rgba(238, 41, 34, 1);
+    --accent: var(--accent-500);
+    --green: #00c853;
+
+    --text-300: rgba(255, 255, 255, 0.7);
+    --text-400: rgba(255, 255, 255, 0.85);
+    --text-500: rgba(255, 255, 255, 1);
+    --text: var(--text-300);
+
+    --text-b-300: rgba(0, 0, 0, 0.7);
+    --text-b-400: rgba(0, 0, 0, 0.9);
+    --text-b-500: rgba(0, 0, 0, 1);
+    --text-b: var(--text-b-300);
+
+    // DYNAMIC VARIABLES
+    // --background: hsl(20, 14.3%, 4.1%);
+    // --foreground: hsl(60, 9.1%, 97.8%);
+    // --primary: hsl(47.9, 95.8%, 53.1%);
+    // --primary-foreground: hsl(26, 83.3%, 14.1%);
+
+    --background: hsl(0, 0%, 100%);
+    --foreground: hsl(240, 10%, 3.9%);
+    --primary: hsl(164.9, 100%, 35.1%);
+    --primary-foreground: hsl(0, 0%, 98%);
+
+    --alpha-primary: color-mix(in srgb, var(--primary) 10%, transparent);
+    --alpha-foreground: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+/*
+-----------------------------------------------------------------
+UTILITY COLORS
+-----------------------------------------------------------------
+*/
+:root {
+    --white: #ffffff;
+    --black: #000000;
+}

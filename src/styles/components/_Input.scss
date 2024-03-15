@@ -1,0 +1,35 @@
+.inputContainer {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--primary); /* Bottom border */
+    border-radius: 5px;
+    background-color: var(--white);
+    padding: 1px;
+
+    .inputBox {
+        border: none;
+        outline: none;
+
+        flex: 1;
+        padding: 5px;
+    }
+
+    .iconContainer {
+        padding: 9px 5px;
+        svg {
+            fill: var(--black);
+        }
+    }
+
+    .inlineButton {
+        margin-left: 5px;
+    }
+}
+
+.inputLabel {
+    margin-bottom: 5px;
+}
+
+.inputError {
+    color: red;
+}
