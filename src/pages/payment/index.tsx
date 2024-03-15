@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { IoChevronBack, IoCardOutline } from "react-icons/io5";
 import Button from "@/components/Form/Button";
-import { useCache } from "@/utils/useCache";
 import { CURRENCY_SYMBOL } from "@/utils/constants";
 import AccordionWithInput from "@/components/Form/Accordian";
 import { useFormik } from "formik";
@@ -10,6 +8,7 @@ import { CheckoutContext } from "@/contexts/Context";
 import { useRouter } from "next/router";
 import { validationMapper } from "@/utils/helpers";
 import { toast } from "react-toastify";
+import GetCustomIcon from "@/components/CustomIcon";
 
 interface Product {
     id: number;
@@ -99,7 +98,7 @@ const Payment = (props: any) => {
                             title={
                                 <>
                                     {" "}
-                                    <IoCardOutline />
+                                    <GetCustomIcon iconType={item} />
                                     <div>
                                         <h4>{item}</h4>
                                     </div>
