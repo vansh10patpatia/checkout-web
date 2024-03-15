@@ -26,11 +26,28 @@ Open [http://localhost:3000/checkout](http://localhost:3000/checkout) with your 
 - SCSS & Lottie
   - For styling components and displaying animations
 
+## Features
+- Local API cache
+  - Usage Guide:
+    -   Import the useCachedAPI hook into your React component.
+    -   Call the hook with the desired API endpoint URL and optional customization parameters.
+    -   Access the fetched data, loading state, and error status returned by the hook.
+  -   Best Practices
+    -   Use avoidInitialFetch when the initial fetch is unnecessary or can be deferred.
+    -   Set an appropriate TTL based on data volatility and application requirements for optimal caching performance.
+  -   Improved Performance: Local caching reduces latency by serving subsequent requests from cache, optimizing resource usage and enhancing user experience.
+  -   Reduced Server Load: Caching data locally conserves server resources, improving scalability and ensuring reliability even during high traffic.
+ 
+- Dynamic Theming Feature
+  - It uses CSS root variables for theming, enabling easy and efficient customization of the application's styling.
+  - This allows for seamless customization of the application's theme, enabling brands to create a unique and branded user experience.
+  - The feature is seamlessly integrated into the application, ensuring smooth implementation and minimal disruption to existing functionality.  
+
 ## Screenshots
 
 <div>
-  <img width="50%" alt="Checkout-desktop" src="https://github.com/vansh10patpatia/checkout-web/assets/68200019/4579cca8-4086-481e-a9c8-d81e74308ecc">
-  <img width="50%" alt="Payment-desktop" src="https://github.com/vansh10patpatia/checkout-web/assets/68200019/9bfd0b17-d30f-41e4-b286-6c167f15f22b">
+  <img width="48%" alt="Checkout-desktop" src="https://github.com/vansh10patpatia/checkout-web/assets/68200019/4579cca8-4086-481e-a9c8-d81e74308ecc">
+  <img width="48%" alt="Payment-desktop" src="https://github.com/vansh10patpatia/checkout-web/assets/68200019/9bfd0b17-d30f-41e4-b286-6c167f15f22b">
 </div>
 <div>
   <img width="32%" alt="Checkout-phone" src="https://github.com/vansh10patpatia/checkout-web/assets/68200019/82f0bb34-42d6-45e1-b371-a4cf27c2a02b">
