@@ -13,7 +13,7 @@ type ReturnData<T> = {
     fetchData: () => void;
 };
 
-const DefaultTTL = 3600000; // 1 hour
+const DefaultTTL = 60000; // 60 Seconds
 
 const useCachedAPI = <T,>(
     url: string,
@@ -29,20 +29,21 @@ const useCachedAPI = <T,>(
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
-    const fetchData = async () => {
+    const fetchData = async (hardRefresh: boolean = true) => {
         try {
             setIsLoading(true);
 
-            // const cachedItem = localStorage.getItem(url);
-            // if (cachedItem) {
-            //     const parsedCachedData: CachedData<T> =
-            //         JSON.parse(cachedItem);
-            //     if (Date.now() - parsedCachedData.timestamp < ttl) {
-            //         setCachedData(parsedCachedData);
-            //         setIsLoading(false);
-            //         return;
-            //     }
-            // }
+            const cachedItem = localStorage.getItem(url);
+            if (cachedItem && !hardRefresh) {
+                const parsedCachedData: CachedData<T> = JSON.parse(cachedItem);
+                if (Date.now() - parsedCachedData.timestamp < ttl) {
+                    setCachedData(parsedCachedData);
+                    setIsLoading(false);
+                    setFunction(parsedCachedData.data as T);
+                    return;
+                }
+            }
+
             const response = await fetch(API_BASE_URL + url);
             if (!response.ok) {
                 throw new Error("Failed to fetch data");
@@ -67,7 +68,7 @@ const useCachedAPI = <T,>(
 
     useEffect(() => {
         let mounted = true;
-        if (mounted && !avoidInitialFetch) fetchData();
+        if (mounted && !avoidInitialFetch) fetchData(false);
 
         return () => {
             mounted = false;
